@@ -2,20 +2,18 @@
  * Apache-2.0 */
 
 import {
-  IFeatureSet,
-  IField,
   IExtent,
-  ISpatialReference,
-  esriGeometryType,
-  IHasZM,
-  IFeature,
-  IGeometry,
-  IPoint,
   ISimpleLineSymbol,
   IPictureMarkerSymbol,
   ISimpleFillSymbol,
   Color
 } from "./index";
+
+import { EsriGeometryType, SpatialReference, IHasZM } from "./common";
+
+import { IField, IFeature, IFeatureSet } from "./feature";
+
+import { IEnvelope, IPoint } from "./geometry";
 
 /**
  * The format object can be used with numerical or date fields to provide more detail about how values should be displayed in popup windows.
@@ -248,7 +246,7 @@ export interface IMapLocation {
   /** The center of the map specified using X/Y coordinates. */
   centerPoint: IPoint;
   /** Well-known ID (WKID) or well-known text (WKT). */
-  spatialReference: ISpatialReference;
+  spatialReference: SpatialReference;
 }
 
 /**
@@ -371,7 +369,7 @@ export interface IWebmap {
   /** A presentation consists of multiple slides. Each slide has a different title, extent, basemap, layers etc */
   presentation?: any;
   /** [Required] An object used to specify the spatial reference of the given geometry. */
-  spatialReference: ISpatialReference;
+  spatialReference: SpatialReference;
   /** Root element in the web map specifying an array of table objects. (optional) */
   tables?: ITable[];
   /** [Required] Root element in the web map specifying a string value indicating the web map version. */
@@ -836,7 +834,7 @@ export interface ILayerDefinition extends IHasZM {
   /** An array of field objects containing information about the attribute fields for the feature collection or layer. */
   fields?: IField[];
   /** A string defining the type of geometry. Possible geometry types are: esriGeometryPoint, esriGeometryMultipoint, esriGeometryPolyline, esriGeometryPolygon, and esriGeometryEnvelope. */
-  geometryType?: esriGeometryType;
+  geometryType?: EsriGeometryType;
   /** The unique identifier for a feature or table row within a geodatabase. */
   globalIdField?: string;
   /** Indicates whether attachments should be loaded for the layer. */
@@ -870,7 +868,7 @@ export interface ILayerDefinition extends IHasZM {
   /** An object indicating the layerDefinition's layer source. */
   source?: any;
   /** An object containing the WKID or WKT identifying the spatial reference of the layer's geometry. */
-  spatialReference?: ISpatialReference;
+  spatialReference?: SpatialReference;
   /** String value indicating the output formats that are supported in a query. */
   supportedQueryFormats?: string;
   /** Boolean value indicating whether the layer supports orderByFields in a query operation. */
@@ -987,7 +985,7 @@ export interface ITiledImageServiceLayer extends ILayer {
  */
 export interface IExclusionArea {
   /** The geometry defining the area where no data will be fetched. Only extent is supported. */
-  geometry?: IGeometry;
+  geometry?: IEnvelope;
   /** The zoom level where the exclusion ends. */
   maxScale?: number;
   /** The zoom level where the exclusion ends. */
@@ -1083,7 +1081,7 @@ export interface ITileInfo {
   /** Requested tile's row. */
   rows?: any;
   /** The spatial reference of the tiling schema. */
-  spatialReference?: ISpatialReference;
+  spatialReference?: SpatialReference;
 }
 
 /**
