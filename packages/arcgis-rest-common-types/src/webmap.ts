@@ -11,7 +11,7 @@ import {
 
 import { EsriGeometryType, SpatialReference, IHasZM } from "./common";
 
-import { IField, IFeature, IFeatureSet } from "./feature";
+import { IField, IFeatureBase, IFeatureSet } from "./feature";
 
 import { IEnvelope, IPoint } from "./geometry";
 
@@ -943,7 +943,7 @@ export interface ITemplate {
   /** A string containing a user-friendly name for the template. */
   name?: string;
   /** A feature object representing a prototypical feature for the template. */
-  prototype?: IFeature;
+  prototype?: IFeatureBase;
 }
 
 export interface ITypeInfo {

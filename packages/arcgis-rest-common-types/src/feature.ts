@@ -40,7 +40,9 @@ export interface IFeatureAttributes {
  *
  * @param FA The shape of the feature's attributes dictionary.
  */
-export interface IFeature<FA extends IFeatureAttributes = IFeatureAttributes> {
+export interface IFeatureBase<
+  FA extends IFeatureAttributes = IFeatureAttributes
+> {
   /**
    * Any attributes associated with the feature.
    */
@@ -53,10 +55,10 @@ export interface IFeature<FA extends IFeatureAttributes = IFeatureAttributes> {
  * @param FA The shape of the feature's attributes dictionary.
  * @param G The type of geometry that the feature has.
  */
-export interface ISpatialFeature<
+export interface IFeature<
   FA extends IFeatureAttributes = IFeatureAttributes,
   G extends GeometryAny = GeometryAny
-> extends IFeature<FA> {
+> extends IFeatureBase<FA> {
   /**
    * The feature's geometry, applies to feature layers only.
    */
@@ -137,7 +139,7 @@ export interface IFeatureSetBase<
   /**
    * The set of features that belong to the feature set.
    */
-  features: Array<IFeature<FA>>;
+  features: Array<IFeatureBase<FA>>;
   /**
    * The name of the field that contains the feature's ObjectID.
    */
@@ -164,7 +166,7 @@ export interface ISpatialFeatureSet<
   SR extends SpatialReference = SpatialReference,
   G extends GeometryAny<SR> = GeometryAny<SR>
 > extends IFeatureSetBase<FA> {
-  features: Array<ISpatialFeature<FA, G>>;
+  features: Array<IFeature<FA, G>>;
   geometryType: ConditionalGeometryType<G>;
   spatialReference: SR;
 }
