@@ -15,6 +15,8 @@ import {
 
 /**
  * A base geometry object.
+ *
+ * @param SR The spatial reference for the geometry.
  */
 export interface IGeometryBase<SR extends SpatialReference = SpatialReference> {
   /**
@@ -25,6 +27,8 @@ export interface IGeometryBase<SR extends SpatialReference = SpatialReference> {
 
 /**
  * A geometry where the spatial reference system is required.
+ *
+ * @param SR The spatial reference for the geometry.
  */
 export interface IGeometryWithSpatialReference<
   SR extends SpatialReference = SpatialReference
@@ -155,7 +159,7 @@ export type PositionAny = Position | PositionZ | PositionM | PositionZM;
  * A geometry made up of multiple point locations that may or may not contain Z or M
  * values. The spatial reference is defined.
  *
- * @param SR The spatial reference for the point.
+ * @param SR The spatial reference for the multipoint.
  * @param P The position type.
  */
 export interface IMultipointBase<
@@ -171,7 +175,7 @@ export interface IMultipointBase<
 /**
  * An empty multipoint geometry.
  *
- * @param SR The spatial reference for the point.
+ * @param SR The spatial reference for the multipoint.
  */
 export interface IEmptyMultipoint<
   SR extends SpatialReference = SpatialReference
@@ -185,7 +189,7 @@ export interface IEmptyMultipoint<
 /**
  * A geometry comprised of an array of discrete 2-dimensional positions.
  *
- * @param SR The spatial reference for the point.
+ * @param SR The spatial reference for the multipoint.
  */
 export interface IMultipoint<SR extends SpatialReference = SpatialReference>
   extends IMultipointBase<SR, Position>,
@@ -195,7 +199,7 @@ export interface IMultipoint<SR extends SpatialReference = SpatialReference>
 /**
  * A geometry comprised of an array of discrete 3-dimensional positions.
  *
- * @param SR The spatial reference for the point.
+ * @param SR The spatial reference for the multipoint.
  */
 export interface IMultipointZ<SR extends SpatialReference = SpatialReference>
   extends IMultipointBase<SR, PositionZ>,
@@ -206,7 +210,7 @@ export interface IMultipointZ<SR extends SpatialReference = SpatialReference>
  * A geometry comprised of an array of discrete 2-dimensional positions that include
  * M values.
  *
- * @param SR The spatial reference for the point.
+ * @param SR The spatial reference for the multipoint.
  */
 export interface IMultipointM<SR extends SpatialReference = SpatialReference>
   extends IMultipointBase<SR, PositionM>,
@@ -217,7 +221,7 @@ export interface IMultipointM<SR extends SpatialReference = SpatialReference>
  * A geometry comprised of an array of discrete 3-dimensional positions that include
  * M values.
  *
- * @param SR The spatial reference for the point.
+ * @param SR The spatial reference for the multipoint.
  */
 export interface IMultipointZM<SR extends SpatialReference = SpatialReference>
   extends IMultipointBase<SR, PositionZM>,
@@ -227,7 +231,7 @@ export interface IMultipointZM<SR extends SpatialReference = SpatialReference>
 /**
  * A generic multipoint geometry type.
  *
- * @param SR The spatial reference for the point.
+ * @param SR The spatial reference for the multipoint.
  */
 export type MultipointAny<SR extends SpatialReference = SpatialReference> =
   | IEmptyMultipoint<SR>
@@ -359,7 +363,7 @@ export type CurveAny = IArc | IBezierCurve | ICircularArc | IOldCircularArc;
  * A linear geometry made up of multiple ordered vertices that may or may not contain Z or M
  * values. The spatial reference is defined.
  *
- * @param SR The spatial reference for the point.
+ * @param SR The spatial reference for the polyline.
  * @param P The type of the position allowed in the paths array.
  */
 export interface IPolylineBase<
@@ -375,7 +379,7 @@ export interface IPolylineBase<
 /**
  * An empty polyline geometry.
  *
- * @param SR The spatial reference for the point.
+ * @param SR The spatial reference for the polyline.
  */
 export interface IEmptyPolyline<SR extends SpatialReference = SpatialReference>
   extends IPolylineBase<SR> {
@@ -388,7 +392,7 @@ export interface IEmptyPolyline<SR extends SpatialReference = SpatialReference>
 /**
  * A geometry comprised of an array of discrete 2-dimensional paths.
  *
- * @param SR The spatial reference for the point.
+ * @param SR The spatial reference for the polyline.
  */
 export interface IPolyline<SR extends SpatialReference = SpatialReference>
   extends IPolylineBase<SR, Position>,
@@ -398,7 +402,7 @@ export interface IPolyline<SR extends SpatialReference = SpatialReference>
 /**
  * A geometry comprised of an array of discrete 3-dimensional paths.
  *
- * @param SR The spatial reference for the point.
+ * @param SR The spatial reference for the polyline.
  */
 export interface IPolylineZ<SR extends SpatialReference = SpatialReference>
   extends IPolylineBase<SR, PositionZ>,
@@ -408,7 +412,7 @@ export interface IPolylineZ<SR extends SpatialReference = SpatialReference>
 /**
  * A geometry comprised of an array of discrete 2-dimensional paths with M values.
  *
- * @param SR The spatial reference for the point.
+ * @param SR The spatial reference for the polyline.
  */
 export interface IPolylineM<SR extends SpatialReference = SpatialReference>
   extends IPolylineBase<SR, PositionM>,
@@ -418,7 +422,7 @@ export interface IPolylineM<SR extends SpatialReference = SpatialReference>
 /**
  * A geometry comprised of an array of discrete 3-dimensional paths with M values.
  *
- * @param SR The spatial reference for the point.
+ * @param SR The spatial reference for the polyline.
  */
 export interface IPolylineZM<SR extends SpatialReference = SpatialReference>
   extends IPolylineBase<SR, PositionZM>,
@@ -428,7 +432,7 @@ export interface IPolylineZM<SR extends SpatialReference = SpatialReference>
 /**
  * A linear geometry that contains curved segments.
  *
- * @param SR The spatial reference for the point.
+ * @param SR The spatial reference for the polyline.
  * @param T The type of the position or curve allowed in the curved paths array.
  */
 export interface ICurvePolylineBase<
@@ -444,7 +448,7 @@ export interface ICurvePolylineBase<
 /**
  * A geometry comprised of an array of discrete 2-dimensional paths that may have curves.
  *
- * @param SR The spatial reference for the point.
+ * @param SR The spatial reference for the polyline.
  */
 export interface ICurvePolyline<SR extends SpatialReference = SpatialReference>
   extends ICurvePolylineBase<SR, Position | Curve>,
@@ -454,7 +458,7 @@ export interface ICurvePolyline<SR extends SpatialReference = SpatialReference>
 /**
  * A geometry comprised of an array of discrete 3-dimensional paths that may have curves.
  *
- * @param SR The spatial reference for the point.
+ * @param SR The spatial reference for the polyline.
  */
 export interface ICurvePolylineZ<
   SR extends SpatialReference = SpatialReference
@@ -464,7 +468,7 @@ export interface ICurvePolylineZ<
  * A geometry comprised of an array of discrete 2-dimensional paths that may have curves.
  * Vertices include M values.
  *
- * @param SR The spatial reference for the point.
+ * @param SR The spatial reference for the polyline.
  * Vertices include M values.
  */
 export interface ICurvePolylineM<
@@ -475,7 +479,7 @@ export interface ICurvePolylineM<
  * A geometry comprised of an array of discrete 3-dimensional paths that may have curves.
  * Vertices include M values.
  *
- * @param SR The spatial reference for the point.
+ * @param SR The spatial reference for the polyline.
  */
 export interface ICurvePolylineZM<
   SR extends SpatialReference = SpatialReference
@@ -484,7 +488,7 @@ export interface ICurvePolylineZM<
 /**
  * A generic polyline geometry type.
  *
- * @param SR The spatial reference for the point.
+ * @param SR The spatial reference for the polyline.
  */
 export type PolylineAny<SR extends SpatialReference = SpatialReference> =
   | IEmptyPolyline<SR>
@@ -501,7 +505,7 @@ export type PolylineAny<SR extends SpatialReference = SpatialReference> =
  * A polygonal geometry made up of multiple rings of ordered vertices that may or may not
  * contain Z or M values. The spatial reference is defined.
  *
- * @param SR The spatial reference for the point.
+ * @param SR The spatial reference for the polygon.
  * @param P The type of the position allowed in the ring array.
  */
 export interface IPolygonBase<
@@ -518,7 +522,7 @@ export interface IPolygonBase<
 /**
  * An empty polygon geometry.
  *
- * @param SR The spatial reference for the point.
+ * @param SR The spatial reference for the polygon.
  */
 export interface IEmptyPolygon<SR extends SpatialReference = SpatialReference>
   extends IPolygonBase<SR> {
@@ -531,7 +535,7 @@ export interface IEmptyPolygon<SR extends SpatialReference = SpatialReference>
 /**
  * A geometry comprised of an array of discrete 2-dimensional paths that self-close.
  *
- * @param SR The spatial reference for the point.
+ * @param SR The spatial reference for the polygon.
  */
 export interface IPolygon<SR extends SpatialReference = SpatialReference>
   extends IPolygonBase<SR, Position>,
@@ -541,7 +545,7 @@ export interface IPolygon<SR extends SpatialReference = SpatialReference>
 /**
  * A geometry comprised of an array of discrete 3-dimensional paths that self-close.
  *
- * @param SR The spatial reference for the point.
+ * @param SR The spatial reference for the polygon.
  */
 export interface IPolygonZ<SR extends SpatialReference = SpatialReference>
   extends IPolygonBase<SR, PositionZ>,
@@ -552,7 +556,7 @@ export interface IPolygonZ<SR extends SpatialReference = SpatialReference>
  * A geometry comprised of an array of discrete 2-dimensional paths that self-close.
  * Vertices include M values.
  *
- * @param SR The spatial reference for the point.
+ * @param SR The spatial reference for the polygon.
  * Vertices include M values.
  */
 export interface IPolygonM<SR extends SpatialReference = SpatialReference>
@@ -563,7 +567,7 @@ export interface IPolygonM<SR extends SpatialReference = SpatialReference>
 /**
  * A geometry comprised of an array of discrete 3-dimensional paths that self-close.
  *
- * @param SR The spatial reference for the point.
+ * @param SR The spatial reference for the polygon.
  * Vertices include M values.
  */
 export interface IPolygonZM<SR extends SpatialReference = SpatialReference>
@@ -575,7 +579,7 @@ export interface IPolygonZM<SR extends SpatialReference = SpatialReference>
  * A polygonal geometry made up of multiple rings of ordered vertices that may or may not
  * contain Z or M values and may have curves.
  *
- * @param SR The spatial reference for the point.
+ * @param SR The spatial reference for the polygon.
  * @param T The type of the position or curve allowed in the curved rings array.
  */
 export interface ICurvePolygonBase<
@@ -589,7 +593,7 @@ export interface ICurvePolygonBase<
  * A geometry comprised of an array of discrete 2-dimensional rings that self-close
  * and may have curves.
  *
- * @param SR The spatial reference for the point.
+ * @param SR The spatial reference for the polygon.
  */
 export interface ICurvePolygon<SR extends SpatialReference = SpatialReference>
   extends ICurvePolygonBase<SR, Position | Curve>,
@@ -600,7 +604,7 @@ export interface ICurvePolygon<SR extends SpatialReference = SpatialReference>
  * A geometry comprised of an array of discrete 3-dimensional rings that self-close
  * and may have curves.
  *
- * @param SR The spatial reference for the point.
+ * @param SR The spatial reference for the polygon.
  */
 export interface ICurvePolygonZ<SR extends SpatialReference = SpatialReference>
   extends ICurvePolygonBase<SR, PositionZ | CurveZ>,
@@ -611,7 +615,7 @@ export interface ICurvePolygonZ<SR extends SpatialReference = SpatialReference>
  * A geometry comprised of an array of discrete 2-dimensional rings that self-close
  * and may have curves. Vertices include M values.
  *
- * @param SR The spatial reference for the point.
+ * @param SR The spatial reference for the polygon.
  */
 export interface ICurvePolygonM<SR extends SpatialReference = SpatialReference>
   extends ICurvePolygonBase<SR, PositionM | CurveM>,
@@ -622,7 +626,7 @@ export interface ICurvePolygonM<SR extends SpatialReference = SpatialReference>
  * A geometry comprised of an array of discrete 3-dimensional rings that self-close
  * and may have curves. Vertices include M values.
  *
- * @param SR The spatial reference for the point.
+ * @param SR The spatial reference for the polygon.
  */
 export interface ICurvePolygonZM<
   SR extends SpatialReference = SpatialReference
@@ -631,7 +635,7 @@ export interface ICurvePolygonZM<
 /**
  * A generic polygon geometry.
  *
- * @param SR The spatial reference for the point.
+ * @param SR The spatial reference for the polygon.
  */
 export type PolygonAny<SR extends SpatialReference = SpatialReference> =
   | IEmptyPolygon<SR>
@@ -647,7 +651,7 @@ export type PolygonAny<SR extends SpatialReference = SpatialReference> =
 /**
  * A geometry that represents a bounding box.
  *
- * @param SR The spatial reference for the point.
+ * @param SR The spatial reference for the envelope.
  */
 export interface IEnvelopeBase<SR extends SpatialReference = SpatialReference>
   extends IGeometryBase<SR> {
@@ -660,7 +664,7 @@ export interface IEnvelopeBase<SR extends SpatialReference = SpatialReference>
 /**
  * A geometry that represents a bounding box with no location in space.
  *
- * @param SR The spatial reference for the point.
+ * @param SR The spatial reference for the envelope.
  */
 export interface IEmptyEnvelope<SR extends SpatialReference = SpatialReference>
   extends IEnvelopeBase<SR> {
@@ -673,7 +677,7 @@ export interface IEmptyEnvelope<SR extends SpatialReference = SpatialReference>
 /**
  * A rectangle defined by a range of coordinates.
  *
- * @param SR The spatial reference for the point.
+ * @param SR The spatial reference for the envelope.
  */
 export interface IEnvelope<SR extends SpatialReference = SpatialReference>
   extends IEnvelopeBase<SR> {
@@ -712,7 +716,7 @@ export interface IEnvelope<SR extends SpatialReference = SpatialReference>
 /**
  * A generic envelope geometry.
  *
- * @param SR The spatial reference for the point.
+ * @param SR The spatial reference for the envelope.
  */
 export type EnvelopeAny<SR extends SpatialReference = SpatialReference> =
   | IEmptyEnvelope<SR>
@@ -721,7 +725,7 @@ export type EnvelopeAny<SR extends SpatialReference = SpatialReference> =
 /**
  * A generic geometry type.
  *
- * @param SR The spatial reference for the point.
+ * @param SR The spatial reference for the geometry.
  */
 export type GeometryAny<SR extends SpatialReference = SpatialReference> =
   | PointAny<SR>
@@ -733,7 +737,7 @@ export type GeometryAny<SR extends SpatialReference = SpatialReference> =
 /**
  * Geometry types without z coordinates or M values.
  *
- * @param SR The spatial reference for the point.
+ * @param SR The spatial reference for the geometry.
  */
 export type Geometry<SR extends SpatialReference = SpatialReference> =
   | IPoint<SR>
@@ -750,7 +754,7 @@ export type Geometry<SR extends SpatialReference = SpatialReference> =
 /**
  * Geometry types that include z coordinates (typically vertical).
  *
- * @param SR The spatial reference for the point.
+ * @param SR The spatial reference for the geometry.
  */
 export type GeometryZ<SR extends SpatialReference = SpatialReference> =
   | IPointZ<SR>
@@ -763,7 +767,7 @@ export type GeometryZ<SR extends SpatialReference = SpatialReference> =
 /**
  * Geometry types that include M values (typically linear).
  *
- * @param SR The spatial reference for the point.
+ * @param SR The spatial reference for the geometry.
  */
 export type GeometryM<SR extends SpatialReference = SpatialReference> =
   | IPointM<SR>
@@ -776,7 +780,7 @@ export type GeometryM<SR extends SpatialReference = SpatialReference> =
 /**
  * Geometry types that include both z coordinates (vertical) and M values (linear).
  *
- * @param SR The spatial reference for the point.
+ * @param SR The spatial reference for the geometry.
  */
 export type GeometryZM<SR extends SpatialReference = SpatialReference> =
   | IPointZM<SR>
