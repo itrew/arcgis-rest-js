@@ -1,7 +1,8 @@
-/* Copyright (c) 2018 Environmental Systems Research Institute, Inc.
- * Apache-2.0 */
+/* Copyright (c) 2018-2019 Environmental Systems Research Institute, Inc.
+ * Apache-2.0
+ */
 
-import { ISpatialReference } from "./geometry";
+import { SpatialReference } from "../common-data-types/core";
 
 /**
  * A Portal [Item](https://developers.arcgis.com/rest/users-groups-and-items/common-parameters.htm) that has not been created yet.
@@ -22,7 +23,7 @@ export interface IItemAdd {
   documentation?: string;
   extent?: number[][];
   categories?: string[];
-  spatialReference?: ISpatialReference;
+  spatialReference?: SpatialReference;
   culture?: string;
   properties?: any;
   url?: string;
