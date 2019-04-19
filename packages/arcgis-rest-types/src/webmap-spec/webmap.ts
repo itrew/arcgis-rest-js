@@ -1,41 +1,23 @@
-/* Copyright (c) 2018 Environmental Systems Research Institute, Inc.
- * Apache-2.0 */
-
-import {
-  IExtent,
-  ISpatialReference,
-  GeometryType,
-  IHasZM,
-  IGeometry,
-  IPoint
-} from "./geometry";
-
-import { IFeature, IFeatureSet } from "./feature";
-
-import {
-  ISimpleLineSymbol,
-  IPictureMarkerSymbol,
-  ISimpleFillSymbol,
-  Color
-} from "./symbol";
-
-/**
- * Field type.
+/* Copyright (c) 2018-2019 Environmental Systems Research Institute, Inc.
+ * Apache-2.0
  */
-export type FieldType =
-  | "esriFieldTypeBlob"
-  | "esriFieldTypeDate"
-  | "esriFieldTypeDouble"
-  | "esriFieldTypeGeometry"
-  | "esriFieldTypeGlobalID"
-  | "esriFieldTypeGUID"
-  | "esriFieldTypeInteger"
-  | "esriFieldTypeOID"
-  | "esriFieldTypeRaster"
-  | "esriFieldTypeSingle"
-  | "esriFieldTypeSmallInteger"
-  | "esriFieldTypeString"
-  | "esriFieldTypeXML";
+
+import {
+  Color,
+  IExtent,
+  IFeature,
+  IFeatureSet,
+  IField,
+  FieldType,
+  GeometryType,
+  GeometryAny,
+  HasZM,
+  IPictureMarkerSymbol,
+  PointAny,
+  ISimpleFillSymbol,
+  ISimpleLineSymbol,
+  SpatialReference
+} from "../common-data-types/index";
 
 /**
  * Contains information about an attribute field.
@@ -46,7 +28,7 @@ export type FieldType =
  * import { IField } from "@esri/arcgis-rest-feature-layer";
  * ```
  */
-export interface IField {
+export interface IField extends IField {
   /** A string defining the field name. */
   name: string;
   /** A string defining the field type. */
@@ -310,9 +292,9 @@ export interface IMapRangeInfo {
  */
 export interface IMapLocation {
   /** The center of the map specified using X/Y coordinates. */
-  centerPoint: IPoint;
+  centerPoint: PointAny;
   /** Well-known ID (WKID) or well-known text (WKT). */
-  spatialReference: ISpatialReference;
+  spatialReference: SpatialReference;
 }
 
 /**
@@ -345,7 +327,7 @@ export interface IVisibleLayer {
  */
 export interface IVisiblePopup {
   /** Object with spatialReference, x, and y. */
-  anchorPoint?: IPoint;
+  anchorPoint?: PointAny;
   /** An integer specifying the feature's id. */
   featureId?: number;
   /** A string specifying the layer id. */
@@ -441,7 +423,7 @@ export interface IWebmap {
   /** A presentation consists of multiple slides. Each slide has a different title, extent, basemap, layers etc */
   presentation?: any;
   /** [Required] An object used to specify the spatial reference of the given geometry. */
-  spatialReference: ISpatialReference;
+  spatialReference: SpatialReference;
   /** Root element in the web map specifying an array of table objects. (optional) */
   tables?: ITable[];
   /** [Required] Root element in the web map specifying a string value indicating the web map version. */
@@ -886,7 +868,7 @@ export interface IDrawingInfo {
  * import { ILayerDefinition } from "@esri/arcgis-rest-feature-layer";
  * ```
  */
-export interface ILayerDefinition extends IHasZM {
+export interface ILayerDefinition extends HasZM {
   /** Boolean value indicating whether the geometry of the features in the layer can be edited. */
   allowGeometryUpdates?: boolean;
   /** A comma separated list of supported capabilities, e.g. Query,Editing. */
@@ -948,7 +930,7 @@ export interface ILayerDefinition extends IHasZM {
   /** An object indicating the layerDefinition's layer source. */
   source?: any;
   /** An object containing the WKID or WKT identifying the spatial reference of the layer's geometry. */
-  spatialReference?: ISpatialReference;
+  spatialReference?: SpatialReference;
   /** String value indicating the output formats that are supported in a query. */
   supportedQueryFormats?: string;
   /** Boolean value indicating whether the layer supports orderByFields in a query operation. */
@@ -1093,7 +1075,7 @@ export interface ITiledImageServiceLayer extends ILayer {
  */
 export interface IExclusionArea {
   /** The geometry defining the area where no data will be fetched. Only extent is supported. */
-  geometry?: IGeometry;
+  geometry?: GeometryAny;
   /** The zoom level where the exclusion ends. */
   maxScale?: number;
   /** The zoom level where the exclusion ends. */
@@ -1185,11 +1167,11 @@ export interface ITileInfo {
   /** An array of levels of detail that define the tiling scheme. */
   lods?: ILod[];
   /** The tiling scheme origin. */
-  origin?: IPoint;
+  origin?: PointAny;
   /** Requested tile's row. */
   rows?: any;
   /** The spatial reference of the tiling schema. */
-  spatialReference?: ISpatialReference;
+  spatialReference?: SpatialReference;
 }
 
 /**

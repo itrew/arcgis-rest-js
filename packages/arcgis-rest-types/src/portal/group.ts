@@ -1,5 +1,6 @@
-/* Copyright (c) 2018 Environmental Systems Research Institute, Inc.
- * Apache-2.0 */
+/* Copyright (c) 2018-2019 Environmental Systems Research Institute, Inc.
+ * Apache-2.0
+ */
 
 /**
  * `GroupMembership` can also be imported from the following packages:
