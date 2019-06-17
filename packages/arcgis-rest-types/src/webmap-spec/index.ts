@@ -4,5 +4,4 @@
  * https://developers.arcgis.com/web-map-specification/
  */
 
-import * as Webmap from "./webmap";
-export { Webmap };
+export * from "./webmap";
