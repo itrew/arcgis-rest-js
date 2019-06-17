@@ -4,6 +4,7 @@
  */
 
 export * from "./core";
+export * from "./domain";
 export * from "./feature";
 export * from "./featureSet";
 export * from "./geometry";
