@@ -216,7 +216,7 @@ export interface ITextSymbol {
   /** The text's background color. */
   backgroundColor: Color;
   /** The texts border line size in points. */
-  borderLineSize: number; // <size>;
+  borderLineSize: number;
   /** The text's border line color. */
   borderLineColor: Color;
   /** The text's halo size in points. */

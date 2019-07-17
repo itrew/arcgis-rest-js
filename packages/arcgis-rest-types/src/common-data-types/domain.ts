@@ -25,6 +25,7 @@ interface IDomainBase {
  * @export
  * @interface IRangeDomain
  * @extends {IDomainBase}
+ * @see https://developers.arcgis.com/web-map-specification/objects/range_domain/
  */
 export interface IRangeDomain extends IDomainBase {
   type: "range";
@@ -37,6 +38,7 @@ export interface IRangeDomain extends IDomainBase {
  *
  * @export
  * @interface ICodedValue
+ * @see https://developers.arcgis.com/web-map-specification/objects/codedValue/
  */
 export interface ICodedValue {
   /** The name of the coded value. */
@@ -51,6 +53,7 @@ export interface ICodedValue {
  * @export
  * @interface ICodedValueDomain
  * @extends {IDomainBase}
+ * @see https://developers.arcgis.com/web-map-specification/objects/codedValue_domain/
  */
 export interface ICodedValueDomain extends IDomainBase {
   type: "codedValue";
@@ -66,6 +69,7 @@ export interface ICodedValueDomain extends IDomainBase {
  * @export
  * @interface IInheritedDomain
  * @extends {IDomainBase}
+ * @see https://developers.arcgis.com/web-map-specification/objects/inherited_domain/
  */
 export interface IInheritedDomain extends IDomainBase {
   type: "inherited";
