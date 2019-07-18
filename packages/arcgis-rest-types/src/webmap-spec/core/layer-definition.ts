@@ -29,11 +29,39 @@ import {
  * @see https://developers.arcgis.com/web-map-specification/objects/layerDefinition/
  */
 export interface ILayerDefinition {
+  // /**
+  //  * Not in official docs.
+  //  */
+  // advancedQueryCapabilities?: {
+  //   supportsCountDistinct?: boolean;
+  //   supportsDistinct?: boolean;
+  //   supportsHavingClause?: boolean;
+  //   supportsOrderBy?: boolean;
+  //   supportsPagination?: boolean;
+  //   supportsQueryWithDistance?: boolean;
+  //   supportsQueryWithResultType?: boolean;
+  //   supportsReturningGeometryCentroid?: boolean;
+  //   supportsReturningQueryExtent?: boolean;
+  //   supportsSqlExpression?: boolean;
+  //   supportsStatistics?: boolean;
+  //   supportsTrueCurve?: boolean;
+  // };
   /**
    * Boolean value indicating whether the geometry of the features in
    * the layer can be edited.
    */
   allowGeometryUpdates?: boolean;
+  // /**
+  //  * Not in official docs.
+  //  */
+  // allowTrueCurvesUpdates?: boolean;
+  // /**
+  //  * Not in official docs.
+  //  */
+  // archivingInfo?: {
+  //   supportsQueryWithHistoricMoment?: boolean;
+  //   startArchivingMoment?: number;
+  // };
   /**
    * A comma separated list of supported capabilities,
    * e.g. Query,Editing.
@@ -47,17 +75,28 @@ export interface ILayerDefinition {
    * Numeric value indicating the server version of the layer.
    */
   currentVersion?: number;
+  // /**
+  //  * Not in official docs.
+  //  */
+  // dateFieldsTimeReference?: {
+  //   timeZone?: string;
+  //   respectsDaylightSaving?: boolean;
+  // };
   /**
    * Boolean value indicating whether the layer's visibility is turned on.
    */
   defaultVisibility?: boolean;
   /**
    * Stores interactive filters.
+   *
+   * Not on REST endpoint.
    */
   definitionEditor?: IDefinitionEditor;
   /**
    * SQL-based definition expression string that narrows the data to be
    * displayed in the layer.
+   *
+   * Not on REST endpoint.
    */
   definitionExpression?: string;
   /**
@@ -72,6 +111,15 @@ export interface ILayerDefinition {
    * Contains drawing, labeling, and transparency information.
    */
   drawingInfo?: IDrawingInfo;
+  // /**
+  //  * Not in official docs.
+  //  */
+  // editFieldsInfo?: {
+  //   creationDateField?: string;
+  //   creatorField?: string;
+  //   editDateField?: string;
+  //   editorField?: string;
+  // };
   /**
    * An object defining the rectangular area.
    */
@@ -79,6 +127,8 @@ export interface ILayerDefinition {
   /**
    * Feature reductions declutter the screen by hiding features that would
    * otherwise intersect with other features on screen.
+   *
+   * Not on REST endpoint.
    */
   featureReduction?: IFeatureReduction;
   /**
@@ -86,6 +136,10 @@ export interface ILayerDefinition {
    * fields for the feature collection or layer.
    */
   fields?: IField[];
+  // /**
+  //  * Not in official docs.
+  //  */
+  // geometryField?: IField;
   /**
    * A string defining the type of geometry. Possible geometry types are:
    * esriGeometryPoint, esriGeometryMultipoint, esriGeometryPolyline,
@@ -107,6 +161,8 @@ export interface ILayerDefinition {
   hasM?: boolean;
   /**
    * Boolean value indicating whether data changes. True if it does not.
+   *
+   * Not on REST endpoint.
    */
   hasStaticData?: boolean;
   /**
@@ -120,11 +176,20 @@ export interface ILayerDefinition {
     | "esriServerHTMLPopupTypeNone"
     | "esriServerHTMLPopupTypeAsURL"
     | "esriServerHTMLPopupTypeAsHTMLText";
-
   /**
    * The identifier assigned to the layer.
    */
   id?: number;
+  // /**
+  //  * Not in official docs.
+  //  */
+  // indexes?: {
+  //   name?: string;
+  //   fields?: string;
+  //   isAscending?: boolean;
+  //   isUnique?: boolean;
+  //   description?: string;
+  // }[];
   /**
    * Boolean value indicating whether the data is versioned.
    */
@@ -134,6 +199,10 @@ export interface ILayerDefinition {
    * be returned at once for a query.
    */
   maxRecordCount?: number;
+  // /**
+  //  * Not in official docs.
+  //  */
+  // maxRecordCountFactor?: number;
   /**
    * Represents the maximum scale at which the layer definition will
    * be applied. This does not apply to layers of type:
@@ -157,24 +226,56 @@ export interface ILayerDefinition {
    * Indicates the name of the object ID field in the dataset.
    */
   objectIdField?: string;
+  // /**
+  //  * Not in official docs.
+  //  */
+  // onlyAllowTrueCurveUpdatesByTrueCurveClients?: boolean;
   /**
    * Dictates whether a client can support having an end user modify
    * symbols on individual features.
+   *
+   * Not on REST endpoint.
    */
   overrideSymbols?: boolean;
+  // /**
+  //  * Not in official docs.
+  //  */
+  // ownershipBasedAccessControlForFeatures?: boolean;
+  // /**
+  //  * Not in official docs.
+  //  */
+  // parentLayerId?: number;
   /**
    * Indicates range information
+   *
+   * Not on REST endpoint.
    */
   rangeInfos?: IRangeInfo[];
+  // /**
+  //  * Not in official docs.
+  //  */
+  // relationships?: any[];
   /**
    * An object indicating the layerDefinition's layer source.
+   *
+   * Not on REST endpoint.
    */
   source?: Source;
   /**
    * An object containing the WKID or WKT identifying the spatial
    * reference of the layer's geometry.
+   *
+   * Not on REST endpoint.
    */
   spatialReference?: SpatialReference;
+  // /**
+  //  * Not in official docs.
+  //  */
+  // standardMaxRecordCount?: number;
+  // /**
+  //  * Not in official docs.
+  //  */
+  // subtypeField?: string;
   /**
    * String value indicating the output formats that are supported
    * in a query.
@@ -185,6 +286,10 @@ export interface ILayerDefinition {
    * orderByFields in a query operation.
    */
   supportsAdvancedQueries?: boolean;
+  // /**
+  //  * Not in official docs.
+  //  */
+  // supportsApplyEditsWithGlobalIds?: boolean;
   /**
    * Boolean value indicating whether the layer supports uploading
    * attachments with the Uploads operation. This can then be used
@@ -196,6 +301,10 @@ export interface ILayerDefinition {
    * Calculate REST operation when updating features.
    */
   supportsCalculate?: boolean;
+  // /**
+  //  * Not in official docs.
+  //  */
+  // supportsCoordinatesQuantization?: boolean;
   /**
    * Boolean value indicating whether the layer supports rolling
    * back edits made on a feature layer if some of the edits fail.
@@ -211,15 +320,25 @@ export interface ILayerDefinition {
    * supported across a feature service layer.
    */
   supportsValidateSql?: boolean;
+  // /**
+  //  * Not in official docs.
+  //  */
+  // syncCanReturnChanges?: boolean;
   /**
    * A property of the layer definition when there are no types
    * defined; otherwise, templates are defined as properties of
    * the types.
    */
   templates?: ITemplate[];
+  // /**
+  //  * Not in official docs.
+  //  */
+  // tileMaxRecordCount?: number;
   /**
    * The time info metadata of the layer. May be set for feature
    * layers inside a feature collection item.
+   *
+   * Not on REST endpoint.
    */
   timeInfo?: ILayerTimeInfo;
   /**
@@ -236,49 +355,19 @@ export interface ILayerDefinition {
    * Contains information about an attribute field.
    */
   types?: IType;
+  // /**
+  //  * Not in official docs.
+  //  */
+  // useStandardizedQueries?: boolean;
   /** String value indicating the attribute field that is used to
    * control the visibility of a feature. If applicable, when
    * rendering a feature the client should use this field to
    * control visibility. The field's values are 0 = do not display,
    * 1 = display.
+   *
+   * Not on REST endpoint.
    */
   visibilityField?: string;
-
-  // relationships?: any[];
-  // editFieldsInfo?: {
-  //   creationDateField?: string;
-  //   creatorField?: string;
-  //   editDateField?: string;
-  //   editorField?: string;
-  // };
-  // parentLayerId?: number;
-  // ownershipBasedAccessControlForFeatures?: boolean;
-  // syncCanReturnChanges?: boolean;
-  // archivingInfo?: {
-  //   supportsQueryWithHistoricMoment?: boolean;
-  //   startArchivingMoment?: number;
-  // };
-  // supportsValidateSQL?: boolean;
-  // advancedQueryCapabilities?: {
-  //   supportsPagination?: boolean;
-  //   supportsTrueCurve?: boolean;
-  //   supportsQueryWithDistance?: boolean;
-  //   supportsReturningQueryExtent?: boolean;
-  //   supportsStatistics?: boolean;
-  //   supportsOrderBy?: boolean;
-  //   supportsDistinct?: boolean;
-  //   supportsSqlExpression?: boolean;
-  // };
-  // allowTrueCurvesUpdates?: boolean;
-  // onlyAllowTrueCurveUpdatesByTrueCurveClients?: boolean;
-  // supportsApplyEditsWithGlobalIds?: boolean;
-  // subtypeField?: string;
-  // indexes?: any[];
-  // dateFieldsTimeReference?: {
-  //   timeZone?: string;
-  //   respectsDaylightSaving?: boolean;
-  // };
-  // useStandardizedQueries?: boolean;
 }
 
 /**
